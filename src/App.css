@@ -1,0 +1,15 @@
+body {
+  background: linear-gradient(120deg, #2980b9, #8e44ad);
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+label {
+  color: #ffffff;
+}
