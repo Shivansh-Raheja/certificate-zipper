@@ -17,7 +17,7 @@ const Form = () => {
 
   const fetchUniqueSchools = useCallback(async () => {
     try {
-      const response = await fetch('https://certificate-downloader.onrender.com/unique-schools', {
+      const response = await fetch('http://localhost:3001/unique-schools', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ sheetId, sheetName })
@@ -43,7 +43,7 @@ const Form = () => {
 
   const fetchProgress = useCallback(async () => {
     try {
-      const response = await fetch('https://certificate-downloader.onrender.com/fetch-progress');
+      const response = await fetch('http://localhost:3001/fetch-progress');
       const result = await response.json();
       console.log('Fetched Progress:', result.progress, 'Generated Count:', result.generatedCount);
 
@@ -84,10 +84,10 @@ const Form = () => {
     setGeneratedCount(0);
     setLoading(true);
     setIsComplete(false); // Reset completion flag
-    setStatusMessage('Generating certificates, please wait...');
+    setStatusMessage('Generating and sending certificates, please wait... it might take a while....');
 
     try {
-      const response = await fetch('https://certificate-downloader.onrender.com/generate-certificates', {
+      const response = await fetch('http://localhost:3001/generate-certificates', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -116,7 +116,7 @@ const Form = () => {
 
   const handleDownloadZip = async () => {
     try {
-      const response = await fetch('https://certificate-downloader.onrender.com/download-file', {
+      const response = await fetch('http://localhost:3001/download-file', {
         method: 'GET',
       });
   
@@ -207,7 +207,7 @@ const Form = () => {
           className="btn btn-primary btn-block"
           disabled={loading}
         >
-          {loading ? 'Generating Certificates...' : 'Generate Certificates'}
+          {loading ? 'Generating and sending Certificates first...' : 'Generate and send Certificates'}
         </button>
       </form>
       {statusMessage && (
